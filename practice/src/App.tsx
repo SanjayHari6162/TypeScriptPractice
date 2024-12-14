@@ -4,6 +4,7 @@ import { Props } from './Props';
 import { Event } from './Event';
 import { Style } from './Style';
 import { UseState } from './UseState';
+import { UseReducers } from './UseReducers';
 
 function App() {
   
@@ -29,6 +30,7 @@ function App() {
         < Event />
         < Style css={{color:"#fff", backgroundColor:"red",height:"50px",width:"50px"}}/>
         < UseState />
+        < UseReducers />
     </div>
   );
 }
