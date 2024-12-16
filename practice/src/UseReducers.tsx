@@ -47,6 +47,11 @@ export const UseReducers = () =>{
         }
         
     }
+    const handletask = () => {
+        const inputValue=document.getElementById("task").value;
+        dispatch({type:"addTask", payload:document.getElementById("task").value})
+
+    }
     
     return (
         <>
