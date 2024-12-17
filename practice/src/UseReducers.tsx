@@ -15,14 +15,37 @@ import React, { useReducer } from "react"
 //     }
 
 // }
-const reducer = (todo,action)=>{
+
+type todoType={
+    id:number
+    name:string
+    
+}[]
+
+type actionType={
+    type:string;
+    payload:string;
+}
+
+type valueType={
+    value:unknown;
+}
+
+
+
+
+
+
+const reducer = (state:todoType,action:actionType)=>{
     switch(action.type){
         case "addTask" :
-            return[...todo,{id:todo.length+1, name:action.payload}]
+            return[...state,{id:state.length+1, name:action.payload}]
+        default :
+            return state;
     }
 }
 
-const initialValue=[]
+const initialValue:todoType=[]
 
 export const UseReducers = () =>{
 
@@ -39,17 +62,18 @@ export const UseReducers = () =>{
     // }
 
     //todo app useReducer
-    const[todo, dispatch]=useReducer(reducer, initialValue)
+    const[state, dispatch]=useReducer(reducer, initialValue)
     
-    const handleInput = (e) =>{
+    const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) =>{
         if(e.key=="Enter"){
-            dispatch({type:"addTask", payload:e.target.value})
+            
+            dispatch({type:"addTask", payload:e.currentTarget.value})
         }
         
     }
     const handletask = () => {
-        const inputValue=document.getElementById("task").value;
-        dispatch({type:"addTask", payload:document.getElementById("task").value})
+        let inputContainer = document.getElementById("task") as HTMLInputElement
+        dispatch({type:"addTask", payload:inputContainer.value})
 
     }
     
@@ -67,7 +91,7 @@ export const UseReducers = () =>{
             <button onClick={handletask}>Add</button>
             
             <ul>
-            {todo.map((item)=>(<li key={item.id}>{item.name}</li>))}
+            {state.map((item)=>(<li key={item.id}>{item.name}</li>))}
             </ul>
 
         </>
