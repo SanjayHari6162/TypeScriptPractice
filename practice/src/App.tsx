@@ -5,6 +5,8 @@ import { Event } from './Event';
 import { Style } from './Style';
 import { UseState } from './UseState';
 import { UseReducers } from './UseReducers';
+import { MainFile } from './practiceHooks/MainFile';
+import { UseContext } from './UseContext';
 
 function App() {
   
@@ -31,6 +33,10 @@ function App() {
         < Style css={{color:"#fff", backgroundColor:"red",height:"50px",width:"50px"}}/>
         < UseState />
         < UseReducers />
+        
+        <MainFile />
+      <hr/>
+        < UseContext />
     </div>
   );
 }
